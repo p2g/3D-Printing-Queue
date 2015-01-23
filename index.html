@@ -52,6 +52,11 @@
   
 </div>
 
+<div id="projectlist">
+  
+</div>
+
+
 </div></div></div>
     <!-- TODO: Here goes your content! -->
 
@@ -62,12 +67,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
     <script>
+      function readInfo(){
+        var myRef = new Firebase("https://blinding-heat-7430.firebaseio.com/");
+        myRef.on('child_added',function(snap){ var data=snap.val();
+          var html=data.name+', '+data.description;  $('#projectlist').append(html);
+        })
+      }
       function saveInfo(){
           var myRef = new Firebase("https://blinding-heat-7430.firebaseio.com/");
           var description = $('#description').val();
           var theirname = $('#studentname').val();
           myRef.push({name:theirname,description:description});
       }
+      readInfo();
     </script>
   </body>
 </html>
