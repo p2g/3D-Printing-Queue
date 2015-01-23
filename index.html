@@ -53,7 +53,7 @@
 </div>
 
 <div id="projectlist">
-  
+  STUDENT NAME   |   DESCRIPTION<BR/>
 </div>
 
 
@@ -70,8 +70,8 @@
       function readInfo(){
         var myRef = new Firebase("https://blinding-heat-7430.firebaseio.com/");
         myRef.on('child_added',function(snap){ var data=snap.val();
-          var html=data.name+', '+data.description;  $('#projectlist').append(html);
-        })
+          var html=data.name+', '+data.description+'<br/>';  $('#projectlist').append(html);
+        });
       }
       function saveInfo(){
           var myRef = new Firebase("https://blinding-heat-7430.firebaseio.com/");
